@@ -21,12 +21,33 @@ class TrackController extends Controller
 
     public function create()
     {
-        dd('create');
+        return Inertia::render('Track/Create');
     }
 
     public function store(Request $request)
     {
-        //
+        // sleep(2);
+
+        // dd($request->all());
+
+        $request->validate([
+            'title' => ['required', 'string', 'max:255', 'min:3'],
+            'artist' => ['required', 'string', 'max:255', 'min:3'],
+            'cover' => ['required', 'image'],
+            'file' => ['required', 'file', 'mimes:mp3,wav,mov',],
+            'display' => ['required', 'boolean'],
+        ]);
+
+        Track::create([
+            'title' => $request->title,
+            'artist' => $request->artist,
+            'cover' => $request->file('cover')->store('covers', 'public'),
+            'file' => $request->file('file')->store('files', 'public'),
+            'display' => $request->display,
+        ]);
+
+        return redirect()->back();
+        // return redirect()->route('tracks.index');
     }
 
     public function show(string $id)
