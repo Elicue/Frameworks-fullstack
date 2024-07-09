@@ -31,13 +31,34 @@
       tracks: Array,
     },
 
+    data() {
+      return {
+        audio: null,
+        currentTrack: null,
+      }
+    },
+
     methods: {
       play(track) {
-      const url = "storage/" + track.file;
-      console.log(url);
+        const url = "storage/" + track.file;
+        console.log(url);
 
-      let audio = new Audio(url);
-      audio.play();
+        if (!this.currentTrack) {
+          this.audio = new Audio(url);
+          this.audio.play();
+        }else if (this.currentTrack !== track.uuid) {
+          this.audio.pause();
+          this.audio.src = url;
+          this.audio.play();
+        }else {
+          this.audio.paused ? this.audio.play() : this.audio.pause();
+        }
+
+        this.currentTrack = track.uuid;
+        this.audio.addEventListener('ended', () => {
+          this.currentTrack = null;
+        });
+      
       }
     }
   }

@@ -5,7 +5,7 @@
       <div class="flex flex-col justify-between w-full">
         <ul class="flex flex-col">
           <li class="list-none text-xl font-bold">{{ track.title }}</li>
-          <li class="list-none flex flex-row items-center gap-2 text-xs text-gray-400"><img class="w-2 fill-gray-400 h-fit" src="storage/tracks/images/person.svg" alt="person-icon">{{ track.artist }}</li>
+          <li class="list-none flex flex-row items-center gap-2 text-sm text-gray-400"><img class="w-2 fill-gray-400 h-fit" src="storage/tracks/images/person.svg" alt="person-icon">{{ track.artist }}</li>
         </ul>
         <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold px-6 py-1 rounded-md" @click="handleClick">Play</button>
       </div>
