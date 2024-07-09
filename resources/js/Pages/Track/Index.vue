@@ -31,7 +31,6 @@
     components: {
       MusicLayout,
       Track,
-      Link,
     },
 
     props: {

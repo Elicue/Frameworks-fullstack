@@ -7,7 +7,13 @@
           <li class="list-none text-xl font-bold">{{ track.title }}</li>
           <li class="list-none flex flex-row items-center gap-1 text-sm text-gray-400"><img class="w-2 h-fit" src="storage/tracks/images/person.svg" alt="person-icon">{{ track.artist }}</li>
         </ul>
-        <button class="w-fit bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none hover:ring hover:ring-violet-300 focus:ring focus:ring-violet-300 px-2 py-2 rounded-full justify-center flex flex-row items-center gap-1 uppercase" @click="handleClick"><img class="w-4 h-fit" src="storage/tracks/images/play.svg" alt="play"></button>
+        <div class="flex flex-row gap-4">
+          <button class="w-fit bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none hover:ring hover:ring-violet-300 focus:ring focus:ring-violet-300 px-2 py-2 rounded-full justify-center flex flex-row items-center gap-1 uppercase" @click="handleClick"><img class="w-4 h-fit" src="storage/tracks/images/play.svg" alt="play"></button>
+
+          <Link :href="route('tracks.edit', { track: track })" class="w-fit border border-violet-500 hover:bg-violet-600 active:bg-violet-700 px-6 py-1 rounded-md shadow text-violet-500 hover:text-white">Edit</Link>
+
+          <Link :href="route('tracks.destroy', { track: track })" class="w-fit border border-red-500 hover:bg-red-600 active:bg-red-700 px-6 py-1 rounded-md shadow text-red-500 hover:text-white" as="button" method="delete">Delete</Link>
+        </div>
       </div>
     </div>
     <div>
