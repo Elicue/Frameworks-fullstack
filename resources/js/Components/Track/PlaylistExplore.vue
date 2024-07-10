@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col w-1/2 gap-6">
     <div  class="flex flex-col gap-1">
-      <p class=" text-base uppercase text-gray-400">{{ categoryTitle }}</p>
+      <p class=" text-base uppercase text-gray-400 font-medium">{{ categoryTitle }}</p>
       <p class="text-base">{{playlistTitle}}</p>
     </div>
     <div class="relative rounded-lg">

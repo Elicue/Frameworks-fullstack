@@ -5,16 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
+use App\Models\Track;
+use Illuminate\Validation\ValidationException;
+
+
 
 class PlaylistController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-
-        $playlists = Playlist::all();
+        $user = $request->user();
+        // $user = auth()->user(); // same as the previous one
+        $playlists = $user->playlists()->withCount(['tracks'])->get();
 
         return Inertia::render('Playlist/Index', [
             'playlists' => $playlists,
@@ -26,7 +32,11 @@ class PlaylistController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Playlist/Create');
+        $tracks = Track::where('display', true)->get();
+
+        return Inertia::render('Playlist/Create', [
+            'tracks' => $tracks,
+        ]);
     }
 
     /**
@@ -36,19 +46,37 @@ class PlaylistController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
+            'tracks' => 'required|array',
+            'tracks.*' => 'required|string',
         ]);
 
-        dd($request->all());
+        $tracks = Track::whereIn('uuid', $request->tracks)->where('display', true)->get();
+        if ($tracks->count() !== count($request->tracks)) {
+            throw ValidationException::withMessages([
+                'tracks' => 'Invalid tracks',
+            ]);
+        }
+
+        $playlist = Playlist::create([
+            'uuid' => 'ply-' . Str::uuid(),
+            'user_id' => $request->user()->id,
+            'title' => $request->title,
+        ]);
+        $playlist->tracks()->attach($tracks->pluck('id'));
+
+        return redirect()->route('playlists.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Playlist $playlist)
     {
-        //
+        return Inertia::render('Playlist/Show', [
+            'playlist' => $playlist,
+            'tracks' => $playlist->tracks,
+        ]);
     }
-
 
     /**
      * Show the form for editing the specified resource.
