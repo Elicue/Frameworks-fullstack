@@ -1,19 +1,15 @@
 <template>
   <div >
-    <nav class="bg-[#240046] sticky top-0 z-10">
+    <nav class=" bg-violet-900 sticky top-0 z-10">
       <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div class="relative flex h-16 items-center justify-between">
           <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div class="flex flex-shrink-0 items-center">
-              <a href="/tracks"><img class="h-8 w-auto" src="storage/tracks/images/logo.svg" alt="Logo"></a>
+              <a href="/tracks"><img class="h-10 w-auto" src="/storage/tracks/images/logo.svg" alt="Logo"></a>
             </div>
             <div class="hidden sm:ml-6 sm:block">
               <div class="flex space-x-4">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-white" aria-current="page">Dashboard</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-white">Team</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-white">Projects</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-white">Calendar</a>
+                <a href="/playlists" class="block rounded-md px-3 py-2 text-base font-medium text-white" aria-current="page">Playlists</a>
               </div>
             </div>
           </div>
@@ -33,7 +29,7 @@
                 <button type="button" class="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                   <span class="absolute -inset-1.5"></span>
                   <span class="sr-only">Open user menu</span>
-                  <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                  <img class="h-10 w-10 rounded-full" src="/storage/tracks/images/profil.png" alt="profil picture">
                 </button>
               </div>
             </div>
@@ -51,11 +47,12 @@
       </div>
     </nav>
 
-    <main class="bg-[url('storage/tracks/images/background.svg')] bg-no-repeat bg-[length:50vw] min-h-[100vh] bg-fixed">
+    <main class="min-h-[90vh]">
+    <!-- <main class="bg-[url('/storage/tracks/images/background.svg')] bg-no-repeat bg-[length:50vw] min-h-[90vh] bg-fixed"> -->
       <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div class="px-4 py-6 sm:px-0">
-          <slot name="illu"></slot>
           <slot name="action"></slot>
+          <slot name="explore"></slot>
           <slot name="content"></slot>
         </div>
       </div>
