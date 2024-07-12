@@ -20,19 +20,9 @@
     </template>
     <template #content>
       <div>
-        <h2 class="font-bold text-2xl w-full pb-4">All hits</h2>
-        <div class="grid grid-cols-2 gap-5">
+        <h2 class="font-bold text-2xl w-full border-b border-b-gray-200 pb-4">All hits</h2>
+        <div class="grid grid-cols-2 gap-5 mt-6">
           <Track v-for="track in filteredTracks" :key="track.uuid" :track="track" :active="currentTrack === track.uuid" @play="play"/>
-        </div>
-      </div>
-    </template>
-    <template #more>
-      <div class="mt-12">
-        <h2 class="font-bold text-2xl w-full border-b border-b-gray-200 pb-4">More</h2>
-        <div  class="grid grid-cols-3 justify-between gap-6 mt-6">
-          <More title="Activities and moods"/>
-          <More title="Video clips"/>
-          <More title="Browse by genre"/>
         </div>
       </div>
     </template>
@@ -43,8 +33,7 @@
   import MusicLayout from '@/Layouts/MusicLayout.vue';
   import Track from '@/Components/Track/Track.vue';
   import PlaylistExplore from '@/Components/Track/PlaylistExplore.vue';
-  import More from '@/Components/Track/More.vue';
-  import { Link } from '@inertiajs/vue3'
+  import { Link } from '@inertiajs/vue3';
 
 
   export default {
@@ -54,7 +43,6 @@
       MusicLayout,
       Track,
       PlaylistExplore,
-      More,
     },
 
     props: {

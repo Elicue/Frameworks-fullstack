@@ -1,5 +1,5 @@
 <template>
-  <div class=" hover:scale-[1.01] rounded-br-lg rounded-bl-lg transition-all duration-500 bg-white p-3 flex flex-row justify-between w-full h-[17vh] border-t border-t-gray-200 pt-3" :class="{'border-violet-500  border-t-violet-500 border rounded-lg duration-100' : active }">
+  <div class="shadow-[0px_0px_20px_0px_rgba(139,92,246,0.06)] hover:scale-[1.01] rounded-lg transition-all duration-500 bg-white p-3 flex flex-row justify-between w-full h-[17vh] hover:shadow-[0px_0px_20px_0px_rgba(139,92,246,0.1)]" :class="{'border-violet-500  border duration-100' : active }">
     <div class="flex flex-row gap-5 relative w-full">
       <img class="w-[130px] h-fill object-cover rounded-md" :src="'/storage/' + track.cover" alt="cover_album">
       <div class="flex flex-col justify-between w-full">
@@ -32,6 +32,7 @@ export default {
 
   props: {
     track: Object,
+    
     active: {
       type: Boolean,
       default: false,
