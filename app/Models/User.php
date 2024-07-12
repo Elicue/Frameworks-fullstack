@@ -72,4 +72,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Playlist::class);
     }
+
+    /**
+     * Get the user's key.
+     */
+    public function keys(): HasMany
+    {
+        return $this->hasMany(ApiKey::class);
+    }
 }

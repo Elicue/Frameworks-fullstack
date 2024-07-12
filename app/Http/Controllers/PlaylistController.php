@@ -83,7 +83,10 @@ class PlaylistController extends Controller
      */
     public function edit(Playlist $playlist)
     {
-        //
+        return Inertia::render('Playlist/Edit', [
+            'playlist' => $playlist->load('tracks'),
+            'tracks' => Track::where('display', true)->orderBy('title')->get(),
+        ]);
     }
 
     /**
@@ -91,7 +94,25 @@ class PlaylistController extends Controller
      */
     public function update(Request $request, Playlist $playlist)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'tracks' => 'required|array',
+            'tracks.*' => 'required|string',
+        ]);
+
+        $tracks = Track::whereIn('uuid', $request->tracks)->where('display', true)->get();
+        if ($tracks->count() !== count($request->tracks)) {
+            throw ValidationException::withMessages([
+                'tracks' => 'Invalid tracks',
+            ]);
+        }
+
+        $playlist->update([
+            'title' => $request->title,
+        ]);
+        $playlist->tracks()->sync($tracks->pluck('id'));
+
+        return redirect()->route('playlists.index');
     }
 
     /**
@@ -99,6 +120,9 @@ class PlaylistController extends Controller
      */
     public function destroy(Playlist $playlist)
     {
-        //
+        $playlist->tracks()->detach();
+        $playlist->delete();
+
+        return redirect()->route('playlists.index');
     }
 }
