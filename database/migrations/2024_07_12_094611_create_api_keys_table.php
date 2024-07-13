@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('key', function (Blueprint $table) {
+        Schema::create('api_keys', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();
             $table->string('name');
+            $table->foreignId('user_id')->constrained();
             $table->string('key')->unique()->random(20);
             $table->timestamps();
         });

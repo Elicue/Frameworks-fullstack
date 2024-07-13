@@ -10,7 +10,7 @@
             <div class="flex items-center ml-6">
               <div class="flex space-x-4">
                 <Link v-if=" $page.props.auth.user" :href="route('playlists.index')" class=" border-b-transparent border-b text-base font-medium text-black transition-all duration-300 hover:border-b-black">Playlists</Link>
-                <!-- <Link v-if=" $page.props.auth.user" :href="route('playlists.index')" class=" border-b-transparent border-b text-base font-medium text-black hover:border-b-black transition-all duration-300 ">Api Keys</Link> -->
+                <Link v-if=" $page.props.auth.user" :href="route('api-keys.index')" class=" border-b-transparent border-b text-base font-medium text-black hover:border-b-black transition-all duration-300 ">Api Keys</Link>
               </div>
             </div>
           </div>

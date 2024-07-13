@@ -76,7 +76,7 @@ class User extends Authenticatable
     /**
      * Get the user's key.
      */
-    public function keys(): HasMany
+    public function apiKeys(): HasMany
     {
         return $this->hasMany(ApiKey::class);
     }
