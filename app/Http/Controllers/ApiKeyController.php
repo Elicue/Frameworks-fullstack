@@ -39,6 +39,8 @@ class ApiKeyController extends Controller
             'user_id' => $user->id,
         ]);
 
+        $request->session()->put('api_key', $key->key);
+
         return redirect()->route('api-keys.index');
     }
 

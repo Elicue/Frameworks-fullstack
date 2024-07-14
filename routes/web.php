@@ -4,7 +4,6 @@ use App\Http\Controllers\ApiKeyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TrackController;
 use App\Http\Controllers\PlaylistController;
-// use App\Http\Controllers\Api\PlaylistController;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 
