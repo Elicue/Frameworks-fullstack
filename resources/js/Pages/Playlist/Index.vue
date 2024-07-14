@@ -33,7 +33,7 @@
           <p class="capitalize">{{ playlist.title }}</p>
           <p>{{ playlist.tracks_count }} musics</p>
           <p class="text-gray-400">{{ playlist.created_at }}</p>
-          <div class="flex flex-row gap-4 justify-end">
+          <div class="flex flex-row gap-2 justify-end">
             <Link :href="route('playlists.show', playlist.uuid)" class="text-violet-500 flex justify-end w-fit px-4 py-1 active:text-violet-700 border border-violet-500 rounded-md hover:bg-violet-500 hover:text-white transition-all duration-300 font-medium">More</Link>
             <Link :href="route('playlists.edit', playlist.uuid)" class="text-violet-500 flex justify-end w-fit px-4 py-1 active:text-violet-700 border border-violet-500 rounded-md hover:bg-violet-500 hover:text-white transition-all duration-300 font-medium">Edit</Link>
             <Link :href="route('playlists.destroy', playlist.uuid)" as="button" method="delete" class="text-red-500 flex justify-end w-fit px-4 py-1 active:text-red-700 border border-red-500 rounded-md hover:bg-red-500 hover:text-white transition-all duration-300 font-medium">Delete</Link>

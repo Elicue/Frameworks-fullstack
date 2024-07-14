@@ -1,9 +1,9 @@
 <template>
     <MusicLayout> 
         <template #content>
-          <div class="flex flex-row w-full rounded-2xl shadow-[0px_0px_34px_0px_rgba(139,92,246,0.1)] gap-12 bg-white p-4 mt-10">
+          <div class="flex flex-row w-full rounded-2xl shadow-[0px_0px_34px_0px_rgba(139,92,246,0.1)] gap-12 bg-white p-4">
             <div class="flex flex-col w-1/2">
-              <img class="w-full h-full object-cover bg-slate-200 rounded-xl min-h-[70vh]" src="" alt="illustration">
+              <img class="w-full h-full object-cover bg-slate-200 rounded-xl max-h-[80vh] object-bottom" src="/storage/tracks/images/form.png" alt="illustration">
             </div>
             <div class="flex flex-col w-1/2 justify-center">
               <div class="flex flex-row  mb-6 justify-between w-full">
